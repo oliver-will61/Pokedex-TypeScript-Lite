@@ -1,26 +1,33 @@
 
 import {Request,  Response} from 'express';
-
+import {PokemonApiResponse, PokemonResumo} from '../models/Pokemon.js'
 
 export async function encontraPokemon(req: Request, res: Response){
 
     try {
 
         const {nomePokemon} = req.params;
-
-        console.log('esse é o parametro: ', nomePokemon);
         
-
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nomePokemon}`)
 
-        const pokemonData = await response.json();
+        const pokemonData: PokemonApiResponse = await response.json();
 
-        console.log(pokemonData);
+        //toda as informações do pokemon
+        //console.log(pokemonData);
+        
+        const pokemon: PokemonResumo = {
+            id: pokemonData.id,
+            nome: pokemonData.name,
+            tipos: pokemonData.types.map((item) => item.type.name),
+            altura: pokemonData.height,
+            peso: pokemonData.weight
+        }
+
         
         
         return res.status(201).json({
             success: true,
-            pokemon: pokemonData
+            pokemon: pokemon
         })
     }
 
