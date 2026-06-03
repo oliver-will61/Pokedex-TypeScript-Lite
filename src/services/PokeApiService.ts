@@ -10,10 +10,16 @@ export async function encontraPokemon(req: Request, res: Response){
         
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nomePokemon}`)
 
-        const pokemonData: PokemonApiResponse = await response.json();
+        if(!response.ok){
+            console.log('[ERRO] Pokemon não encontrado')
+            return res.status(404).json({
+                mensagem: "[ERRO] Pokemon não encontrado",
+                pokemon: null
+            });
+        }
 
         //toda as informações do pokemon
-        //console.log(pokemonData);
+        const pokemonData: PokemonApiResponse = await response.json();
         
         const pokemon: PokemonResumo = {
             id: pokemonData.id,
@@ -23,19 +29,18 @@ export async function encontraPokemon(req: Request, res: Response){
             peso: pokemonData.weight
         }
 
-        
-        
         return res.status(201).json({
             success: true,
             pokemon: pokemon
         })
     }
 
-    catch (error){
-        console.error('Erro ao capturar o pokemon', error);
+    catch (erro){
+        console.log("[ERRO] Não foi possível buscar o Pokémon.");
         return res.status(500).json({
             success: false,
-            error: error
+            error: erro,
+            mensagem: "[ERRO] Não foi possível buscar o Pokémon." 
         })
     }
 
