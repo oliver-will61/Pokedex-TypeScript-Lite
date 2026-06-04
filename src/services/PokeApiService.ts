@@ -1,6 +1,6 @@
 
 import {Request,  Response} from 'express';
-import {PokemonApiResponse, PokemonResumo} from '../models/Pokemon.js'
+import {PokemonApiResponse} from '../models/Pokemon.js'
 
 
 export async function encontraPokemon(req: Request, res: Response){

@@ -2,18 +2,16 @@ import {PokemonResumo} from '../models/Pokemon.js'
  
 export class Catalago {
 
-    static listaPokemon: Array<PokemonResumo> = [];
+    protected static listaPokemon: Array<PokemonResumo> = [];
 
-    constructor(){
-        
-    }
+    constructor(){}
 
     static addPokemon(pokemon: PokemonResumo){
-        Catalago.listaPokemon.push(pokemon)
+        this.listaPokemon.push(pokemon)
         console.log('Pokemon adicionado no catalago');
     }
 
     static mostraCatalago(){
-        console.log(Catalago.listaPokemon);
+        return this.listaPokemon
     }
 }
