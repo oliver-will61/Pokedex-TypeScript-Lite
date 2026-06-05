@@ -1,0 +1,20 @@
+[
+    {
+        "id": 133,
+        "nome": "eevee",
+        "tipos": [
+            "normal"
+        ],
+        "altura": 3,
+        "peso": 65
+    },
+    {
+        "id": 63,
+        "nome": "abra",
+        "tipos": [
+            "psychic"
+        ],
+        "altura": 9,
+        "peso": 195
+    }
+]
