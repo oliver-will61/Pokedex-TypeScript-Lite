@@ -7,7 +7,7 @@ export async function encontraPokemon(req: Request, res: Response){
 
         const {nomePokemon} = req.params;
 
-        console.log( `procurando pokemon: ${nomePokemon}...`);
+        console.log( `procurando ${nomePokemon}...`);
 
         
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nomePokemon}`)

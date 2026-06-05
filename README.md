@@ -76,3 +76,6 @@ Os arquivos compilados serão gerados no diretório `dist/`.
 ## Licença
 
 MIT
+
+
+metodos array usados: some, map

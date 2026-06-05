@@ -16,5 +16,24 @@
         ],
         "altura": 9,
         "peso": 195
+    },
+    {
+        "id": 16,
+        "nome": "pidgey",
+        "tipos": [
+            "normal",
+            "flying"
+        ],
+        "altura": 3,
+        "peso": 18
+    },
+    {
+        "id": 132,
+        "nome": "ditto",
+        "tipos": [
+            "normal"
+        ],
+        "altura": 3,
+        "peso": 40
     }
 ]
