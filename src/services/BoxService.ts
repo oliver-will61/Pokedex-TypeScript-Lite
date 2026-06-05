@@ -2,6 +2,7 @@ import {PokemonResumo} from '../models/Pokemon.js'
 import fs from 'fs/promises';
 
  
+
 const PC_BOX_PATH = './pc_box.json';
 
 export async function carregaPcBox(): Promise<PokemonResumo[] | null> {

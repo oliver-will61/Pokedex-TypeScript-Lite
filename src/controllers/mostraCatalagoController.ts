@@ -1,5 +1,5 @@
 import {Request,  Response} from 'express';
-import {Catalago} from '../services/BoxService.js'
+import {Catalago} from '../models/CatalagoPokemon.js'
 import {PokemonResumo} from '../models/Pokemon.js'
 
 export async function mostraCatalago(req: Request, res: Response){
