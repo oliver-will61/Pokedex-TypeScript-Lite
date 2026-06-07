@@ -7,5 +7,23 @@
         ],
         "altura": 3,
         "peso": 40
+    },
+    {
+        "id": 63,
+        "nome": "abra",
+        "tipos": [
+            "psychic"
+        ],
+        "altura": 9,
+        "peso": 195
+    },
+    {
+        "id": 25,
+        "nome": "pikachu",
+        "tipos": [
+            "electric"
+        ],
+        "altura": 4,
+        "peso": 60
     }
 ]

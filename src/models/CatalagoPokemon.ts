@@ -1,7 +1,5 @@
-
 import {carregaPcBox, salvarPcBox} from '../services/BoxService.js'
 import {PokemonResumo} from '../models/Pokemon.js'
-
 
 export class Catalago {
 

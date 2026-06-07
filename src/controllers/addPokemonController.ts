@@ -5,31 +5,40 @@ import {PokemonResumo} from '../models/Pokemon.js'
 
 export async function addPokemonController(req: Request, res: Response){
 
-    try{
+    let {nomePokemon} = req.params
 
-                
-        const pokemonDataResumo: PokemonResumo | null =  await encontraPokemon(req, res) 
+    //garante que o parametro seja apenas uma string
+    nomePokemon = Array.isArray(nomePokemon) ? nomePokemon[0] : nomePokemon;
+
+    try{    
+
+        console.log(`Procurando pokemon: ${nomePokemon}...`)
+        
+        const pokemonDataResumo: PokemonResumo | null =  await encontraPokemon(nomePokemon) 
 
         if(pokemonDataResumo == null) {
-            console.log("pokemon não encontrado");
+            console.log("[ERRO] Pokémon não encontrado: pokemon-inexistente");
             
             return res.status(404).json({
-                mensagem: "pokemon não encontrado"
+                mensagem: "[ERRO] Pokémon não encontrado: pokemon-inexistente"
             })
         }
+
+        console.log('Pokemon encontrado!')
 
         const adicionado = await Catalago.addPokemon(pokemonDataResumo)
 
         if (!adicionado) {
-            console.log('Pokemon já existe no catalago');
+            console.log(`[AVISO] ${nomePokemon} já está no catálogo.`);
             return res.status(409).json({
-                mensagem: 'Pokemon já existe no catalago'
+                mensagem: `[AVISO] ${nomePokemon} já está no catálogo.`
             })
         }
 
-        console.log('Pokemon adicionado no catalago!');
+        console.log(`[OK] ${nomePokemon} adicionado ao catálogo.`);
+
         return res.status(201).json({
-            mensagem: 'Pokemon adicionado no catalago!',
+            mensagem: `[OK] ${nomePokemon} adicionado ao catálogo.`,
             pokemon: pokemonDataResumo
         })
             
