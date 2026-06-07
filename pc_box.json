@@ -1,12 +1,12 @@
 [
     {
-        "id": 132,
-        "nome": "ditto",
+        "id": 25,
+        "nome": "pikachu",
         "tipos": [
-            "normal"
+            "electric"
         ],
-        "altura": 3,
-        "peso": 40
+        "altura": 4,
+        "peso": 60
     },
     {
         "id": 63,
@@ -16,14 +16,5 @@
         ],
         "altura": 9,
         "peso": 195
-    },
-    {
-        "id": 25,
-        "nome": "pikachu",
-        "tipos": [
-            "electric"
-        ],
-        "altura": 4,
-        "peso": 60
     }
 ]

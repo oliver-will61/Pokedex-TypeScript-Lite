@@ -7,6 +7,20 @@ export async function mostraCatalago(req: Request, res: Response){
     try{    
         const listaCatalago: Array<PokemonResumo> = Catalago.mostraCatalago();
         
+        if(listaCatalago.length <= 0){
+            return res.status(200).json({
+                mensagem: "[AVISO] Catálogo vazio."
+            })
+        }
+
+        //mostra catalago no terminal
+
+        console.log("Catalago Atual:")
+
+        listaCatalago.forEach((pokemon: PokemonResumo) => {
+            console.log(`#${pokemon.id} - ${pokemon.nome} | Tipos: ${pokemon.tipos} | Altura: ${pokemon.altura} | Peso: ${pokemon.peso}`)
+        });
+
         return res.status(201).json({
             catalago: listaCatalago
         })
