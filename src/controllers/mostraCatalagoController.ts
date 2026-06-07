@@ -21,9 +21,9 @@ export async function mostraCatalagoController(req: Request, res: Response){
         return res.status(201).json({
             catalago: listaPokemon
         })
-    }catch (erro){
+    }catch (error){
         return res.status(500).json({
-            error:erro,
+            error:error,
             mensagem: "Não foi possivel encontrar o catalago"
         })
     }
