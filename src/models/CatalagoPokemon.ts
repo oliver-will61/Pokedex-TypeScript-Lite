@@ -3,7 +3,7 @@ import {PokemonResumo} from '../models/Pokemon.js'
 
 export class Catalago {
 
-    protected static listaPokemon: Array<PokemonResumo> = [];
+    public static listaPokemon: Array<PokemonResumo> = [];
 
     constructor(){}
 
@@ -22,24 +22,46 @@ export class Catalago {
         return true
     }
 
-    static async removePokemonId(id: number){
+    static async removePokemonId(id: number): Promise<boolean>{
+
+        //verifica se o id existe
         const index = this.listaPokemon.findIndex(pokemon => pokemon.id === id)
 
+        //se o id não existir retorna false
         if (index === -1) {
-            console.log(`Pokémon com id ${id} não encontrado no catálogo`)
-            return
+            return false
         }
 
+        // atualiza a lista sem o pokemon correspondente ao id
         this.listaPokemon = this.listaPokemon.filter(
             pokemon => pokemon.id !== id
         )
 
+        //salva a lista no pcBox
         await salvarPcBox(this.listaPokemon)
-        console.log('Catálogo após remoção:', this.listaPokemon)
+
+        // retorna true
+        return true
+
     }
 
+    //apenas mostra o catalago no terminal
     static mostraCatalago(){
-        return this.listaPokemon
+
+        //mostra catalago no terminal
+
+        console.log("Catalago Atual:")
+
+        if(Catalago.listaPokemon.length <= 0){
+            console.log("[AVISO] Catálogo vazio.");
+            return
+        }
+
+        this.listaPokemon.forEach((pokemon: PokemonResumo) => {
+            console.log(`#${pokemon.id} - ${pokemon.nome} | Tipos: ${pokemon.tipos} | Altura: ${pokemon.altura} | Peso: ${pokemon.peso}`)
+        });
+
+        return 
     }
 
     static async iniciar(): Promise<void>{

@@ -1,7 +1,7 @@
 import express, { Express, Request,  Response} from 'express';
 import { addPokemonController } from './controllers/addPokemonController.js';
 import {removePokemonIdController} from './controllers/removePokemonIdController.js';
-import { mostraCatalago } from './controllers/mostraCatalagoController.js';
+import { mostraCatalagoController } from './controllers/mostraCatalagoController.js';
 
 //porta
 const PORT:string = '3000';
@@ -32,7 +32,7 @@ app.delete('/removePokemon/:idPokemon', (req: Request, res: Response) => {
 
 //mostra catalago
 app.get('/mostraCatalago', (req: Request, res: Response) => {
-    mostraCatalago(req, res)
+    mostraCatalagoController(req, res)
 })
 
 export default app;

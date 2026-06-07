@@ -2,27 +2,24 @@ import {Request,  Response} from 'express';
 import {Catalago} from '../models/CatalagoPokemon.js'
 import {PokemonResumo} from '../models/Pokemon.js'
 
-export async function mostraCatalago(req: Request, res: Response){
+export async function mostraCatalagoController(req: Request, res: Response){
+
+    const listaPokemon: Array<PokemonResumo> = Catalago.listaPokemon
 
     try{    
-        const listaCatalago: Array<PokemonResumo> = Catalago.mostraCatalago();
         
-        if(listaCatalago.length <= 0){
+        if(listaPokemon.length <= 0){
+             console.log("[AVISO] Catálogo vazio.");
+            
             return res.status(200).json({
                 mensagem: "[AVISO] Catálogo vazio."
             })
         }
 
-        //mostra catalago no terminal
-
-        console.log("Catalago Atual:")
-
-        listaCatalago.forEach((pokemon: PokemonResumo) => {
-            console.log(`#${pokemon.id} - ${pokemon.nome} | Tipos: ${pokemon.tipos} | Altura: ${pokemon.altura} | Peso: ${pokemon.peso}`)
-        });
+        Catalago.mostraCatalago()
 
         return res.status(201).json({
-            catalago: listaCatalago
+            catalago: listaPokemon
         })
     }catch (erro){
         return res.status(500).json({
