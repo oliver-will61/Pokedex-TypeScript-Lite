@@ -1,6 +1,5 @@
 import {Request,  Response} from 'express';
 import { Catalago } from '../models/CatalagoPokemon.js';
-import { error } from 'console';
 
 export async function removePokemonIdController(req: Request, res: Response) {
 
