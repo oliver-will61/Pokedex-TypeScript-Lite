@@ -11,6 +11,7 @@ export class Catalago {
 
     static async addPokemon(pokemon: PokemonResumo): Promise<boolean>{
         const existe = this.listaPokemon.some(
+            //usa o id ou o nome do Pokemon para verificar se o mesmo já existee no catalago
             p => p.id === pokemon.id || p.nome === pokemon.nome
         )
 
@@ -21,6 +22,22 @@ export class Catalago {
         this.listaPokemon.push(pokemon)
         await salvarPcBox(this.listaPokemon)
         return true
+    }
+
+    static async removePokemonId(id: number){
+        const index = this.listaPokemon.findIndex(pokemon => pokemon.id === id)
+
+        if (index === -1) {
+            console.log(`Pokémon com id ${id} não encontrado no catálogo`)
+            return
+        }
+
+        this.listaPokemon = this.listaPokemon.filter(
+            pokemon => pokemon.id !== id
+        )
+
+        await salvarPcBox(this.listaPokemon)
+        console.log('Catálogo após remoção:', this.listaPokemon)
     }
 
     static mostraCatalago(){
