@@ -18,13 +18,13 @@ export async function removePokemonIdController(req: Request, res: Response) {
             });
         }
 
-        console.log("OK] Pokémon removido do catálogo.");
+        console.log("[OK] Pokémon removido do catálogo.");
         Catalago.mostraCatalago()
         
 
         return res.status(201).json({
             mensagem: "[OK] Pokémon removido do catálogo.",
-            catalago: Catalago.listaPokemon.length > 0 ? Catalago.listaPokemon : "[AVISO] Catálogo vazio."
+            catalagoAtual: Catalago.listaPokemon.length > 0 ? Catalago.listaPokemon : "[AVISO] Catálogo vazio."
         })
     } catch (error) {
         return res.status(500).json({

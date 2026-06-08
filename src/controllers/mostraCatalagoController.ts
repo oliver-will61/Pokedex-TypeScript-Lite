@@ -19,7 +19,7 @@ export async function mostraCatalagoController(req: Request, res: Response){
         Catalago.mostraCatalago()
 
         return res.status(201).json({
-            catalago: listaPokemon
+            catalagoAtual: listaPokemon
         })
     }catch (error){
         return res.status(500).json({
