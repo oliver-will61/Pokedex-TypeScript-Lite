@@ -4,6 +4,7 @@
   "description": "Pokédex CLI em TypeScript com consumo da PokéAPI e persistência local",
   "type": "module",
   "scripts": {
+    "start": "tsx src/main.ts",
     "dev": "tsx src/main.ts",
     "build": "tsc"
   },
